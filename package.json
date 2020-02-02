@@ -1,0 +1,44 @@
+{
+  "name": "docker-image-name-parser",
+  "version": "0.1.0",
+  "description": "Parses a Docker image name/reference, as best as possible!",
+  "main": "dist/main/index.js",
+  "module": "dist/module/index.js",
+  "browser": "dist/browser/index.js",
+  "repository": "https://github.com/flisboac/docker-image-name-parser",
+  "author": "Flavio Lisboa <flisboa.costa@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "compile": "yarn compile:main && yarn compile:module && yarn compile:browser",
+    "compile:main": "tsc -p config/tsconfig.main.json",
+    "compile:module": "tsc -p config/tsconfig.module.json",
+    "compile:browser": "rollup -c config/rollup.browser.js",
+    "lint": "eslint ./src --ext .js,.jsx,.ts,.tsx",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "prerelease": "git-is-clean && yarn lint && yarn test && yarn compile",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "@release-it/conventional-changelog": "^1.1.0",
+    "@rollup/plugin-typescript": "^3.0.0",
+    "@types/jest": "^25.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "eslint": "^6.8.0",
+    "git-is-clean": "^3.0.1",
+    "jest": "^25.1.0",
+    "release-it": "^12.4.3",
+    "rollup": "^1.31.0",
+    "ts-jest": "^25.1.0",
+    "tslib": "^1.10.0",
+    "typescript": "^3.7.5"
+  }
+}
